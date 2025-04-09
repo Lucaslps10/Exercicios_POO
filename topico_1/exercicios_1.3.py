@@ -65,14 +65,20 @@ class Jogador:
         self.energia = 100
         self.pontos = 0
 
-    def recuperar_energia(self, quantidade):
-        self.energia += quantidade
+    def executar(self):
+        atacar_inimigo = PersonagemDois
+        atacar_inimigo.atacar()
         print(f"Aumentou {quantidade} de energia; Energia = {self.energia}")
+
     def usar_energia(self, quantidade):
         self.energia -= quantidade
         print(f"Energia usada: {quantidade} Restante: {self.energia}")
-        if self.energia < 0:
+        if self.energia <= 0:
             print("Sem energia suficiente!")
+        
+    def descansar(self, recuperacao):
+        
+
 
 class Pontuacao:
     def __init__(self, pontos):
