@@ -15,7 +15,7 @@ class PersonagemDois:
 
     def atacar(self, alvo):
         dano = random.randint(5, 20)
-        print(f"Personagem atacou e causou {dano} de dano!")
+        print(f"{self.nome} atacou e causou {dano} de dano!")
         alvo.tomar_dano(dano)
 
 class Inimigo:
@@ -26,9 +26,12 @@ class Inimigo:
     def tomar_dano(self, dano):
         self.vida -= dano
         if self.vida <= 0:
+            self.vida = 0
             print(f"{self.nome} foi derrotado!")
+            return True
         else:
             print(f"{self.nome} tem {self.vida} de vida restante!")
+            return False
 
     def atacar(self, alvo):
         dano = random.randint(5, 20)
@@ -63,32 +66,51 @@ while guerreiro.vida > 0 and inimigo.vida > 0:
 class Jogador:
     def __init__(self):
         self.energia = 100
-        self.pontos = 0
+        self.pontuacao = Pontuacao()
 
-    def executar(self):
-        atacar_inimigo = PersonagemDois
-        atacar_inimigo.atacar()
-        print(f"Aumentou {quantidade} de energia; Energia = {self.energia}")
+    def atacar(self, inimigo):
+        if self.energia < 10:
+            print("Energia insuficiente para atacar, descanse primeito...")
+            self.descansar()
+            return 
+        dano = random.randint(5, 20)
+        print(f"Jogador atacou {inimigo.nome} e causou {dano} de dano!")
 
-    def usar_energia(self, quantidade):
-        self.energia -= quantidade
-        print(f"Energia usada: {quantidade} Restante: {self.energia}")
-        if self.energia <= 0:
-            print("Sem energia suficiente!")
+        self.energia -= 10
+        print(f"Energia restante: {self.energia}")
+
+        derrotado = inimigo.tomar_dano(dano)
+        if derrotado:
+            self.pontuacao.adicionar_pontos(10)
         
-    def descansar(self, recuperacao):
-        
-
+    def descansar(self):
+        if self.energia + 20 > 100:
+            recuperado = 100 - self.energia
+        else:
+            recuperado = 20
+        self.energia += recuperado
+        print(f"Jogador descansou e recuperou {recuperado} de energia. Energia atual: {self.energia}")
 
 class Pontuacao:
-    def __init__(self, pontos):
-        self.pontos = pontos
+    def __init__(self):
+        self.pontos = 0
 
-    def adicionar_pontos(self, quantidade):
-        self.pontos += quantidade
-        print(f"Você ganhou {quantidade} pontos!")
+    def adicionar_pontos(self, valor):
+        self.pontos += valor
+        print(f"Você tem {self.pontos} pontos!")
         
-    def mostrar_pontos(self):
-        print(f"Pontuação atual: {self.pontos}")
+jogador = Jogador()
+inimigos = [Inimigo("Bárbaro", 100), Inimigo("Giagante", 100), Inimigo("Bruxa", 100)]
+
+"""
+for inimigo in inimigos:
+    print(f"\nLutando contra {inimigo.nome}")
+    while inimigo.vida > 0:
+        jogador.atacar(inimigo)
+
+print(f"\nJogo encerrado. Pontuação final: {jogador.pontuacao.pontos}")
+"""
+
+
 
 
