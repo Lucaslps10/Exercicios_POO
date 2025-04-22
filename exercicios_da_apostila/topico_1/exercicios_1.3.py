@@ -1,3 +1,4 @@
+####################### Simulação de Combate entre Personagem e Inimigo ###############################
 import random;
 class PersonagemDois:
     def __init__(self, nome, vida):
@@ -61,7 +62,7 @@ while guerreiro.vida > 0 and inimigo.vida > 0:
 """
 
 
-
+######################## Sistema de Pontuação e Energia no Jogo #############################
 
 class Jogador:
     def __init__(self):
@@ -110,6 +111,8 @@ for inimigo in inimigos:
 
 print(f"\nJogo encerrado. Pontuação final: {jogador.pontuacao.pontos}")
 """
+
+########################### Criando um Sistema de Menu Interativo ####################################
 
 class Menu:
     def exibir(self):
