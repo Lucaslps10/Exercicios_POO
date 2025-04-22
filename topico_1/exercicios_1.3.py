@@ -144,14 +144,20 @@ class Menu:
 
         print(f"\nIniciando o jogo com {num_inimigos} inimigo(s)!")
 
+        turnos_restantes = 10
+
         for inimigo in inimigos:
             print(f"\nLutando contra {inimigo.nome}")
             while inimigo.vida > 0:
                 jogador.atacar(inimigo)
+                turnos_restantes -= 1
                 if inimigo.vida <= 0:
                     break
                 if jogador.energia < 10:
                     jogador.descansar()
+                    turnos_restantes -= 1
+            if turnos_restantes <= 0:
+                break
 
         print("\nFim da partida!!!")
         print(f"Pontuação final: {jogador.pontuacao.pontos}")
