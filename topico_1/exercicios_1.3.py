@@ -111,6 +111,57 @@ for inimigo in inimigos:
 print(f"\nJogo encerrado. Pontuação final: {jogador.pontuacao.pontos}")
 """
 
+class Menu:
+    def exibir(self):
+        while True:
+            print("\n###### MENU ######")
+            print("1. Iniciar Jogo")
+            print("2. Mostrar Opções")
+            print("3. Sair")
+            opcao_escolhida = input("Escolha uma opção: ")
 
+            if opcao_escolhida == "1":
+                self.iniciar_jogo()
+            elif opcao_escolhida == "2":
+                self.mostrar_opcoes()
+            elif opcao_escolhida == "3":
+                print("Saindo do jogo. Bye bye!")
+                break
+            else:
+                print("Opção inválida. Tente novamente.")
 
+    def mostrar_opcoes(self):
+        print("\nOpções do jogo: ")
+        print("Cada ataque gasta 10 pontos de energia.")
+        print("Descansar recupera 20 pontos de energia (máximo 100)")
+        print("Cada inimigo derrotado vale 10 pontos.")
+
+    def iniciar_jogo(self):
+        jogador = Jogador()
+        nome_dos_inimigos = ["Freeza", "Majin-Boo", "Dabura", "Baby", "Cell"]
+        num_inimigos = random.randint(1, 3)
+        inimigos = [Inimigo(random.choice(nome_dos_inimigos), 100) for _ in range(num_inimigos)]
+
+        print(f"\nIniciando o jogo com {num_inimigos} inimigo(s)!")
+
+        for inimigo in inimigos:
+            print(f"\nLutando contra {inimigo.nome}")
+            while inimigo.vida > 0:
+                jogador.atacar(inimigo)
+                if inimigo.vida <= 0:
+                    break
+                if jogador.energia < 10:
+                    jogador.descansar()
+
+        print("\nFim da partida!!!")
+        print(f"Pontuação final: {jogador.pontuacao.pontos}")
+        if jogador.pontuacao.pontos == num_inimigos * 10:
+            print("Parabéns! Você conseguiu vencer todos os inimigos!")
+        else:
+            print("Você sobreviveu, mas não conseguiu vencer todos os inimigos.")
+
+#Inicia o menu
+
+menu = Menu()
+menu.exibir()
 
