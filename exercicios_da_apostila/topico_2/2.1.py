@@ -88,6 +88,7 @@ class Jogador:
         self.__energia -= valor
         print(f"Energia usada: {valor} Restante: {self.energia}")
         if self.__energia < 0:
+            self.__energia = 0
             print("Sem energia suficiente!")
 
     def recuperar_energia(self, valor):
@@ -96,7 +97,7 @@ class Jogador:
         else:
             recuperado = valor
         self.__energia += recuperado
-        print(f"Jogador descansou e recuperou {recuperado} de energia. Energia atual: {self.__energia}")
+        print(f"Jogador recuperou {recuperado} de energia. Energia atual: {self.__energia}")
         
        
 
