@@ -18,8 +18,7 @@ class Pontuacao:
         self.__pontos = pontos
 
     def adicionar_pontos(self, valor):
-        if valor > 0:
-            self.__pontos += valor
+        self.__pontos += valor
         
     def mostrar_pontos(self):
         return self.__pontos
