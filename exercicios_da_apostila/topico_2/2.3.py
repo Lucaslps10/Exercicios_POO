@@ -1,3 +1,4 @@
+
 ############## Construtores ###############
 
 import random
@@ -26,12 +27,27 @@ class Personagem:
         else:
             print("Valor tem que estar entre 0 e 100.")
 
+p1 = Personagem("Doni", 100, 200)
+print(p1.nome)
+print(p1.vida)
+print(p1.defesa)
+
 
 class Inimigo:
-    def __init__(self, nome, vida):
+    def __init__(self, nome, vida, forca):
         self.nome = nome
         self.vida = vida
         self.__forca = random.randint(5, 20)
+        self.forca = forca
+
+    @property
+    def forca(self):
+        return self.__forca
+    
+    @forca.setter
+    def forca(self, valor):
+        if valor >=0:
+            self.__forca = valor ########## Corrigir esse método
 
 
     def tomar_dano(self, dano):
@@ -43,9 +59,6 @@ class Inimigo:
         else:
             print(f"{self.nome} tem {self.vida} de vida restante!")
             return False
-
-    def mostrar_forca(self):
-        return self.__forca
     
     def atacar(self, alvo):
         print(f"{self.nome} atacou com {self.mostrar_forca()} de força!")
