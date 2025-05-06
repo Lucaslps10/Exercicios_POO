@@ -28,10 +28,10 @@ pontuacao.adicionar_pontos(10)
 print(pontuacao.mostrar_pontos())
 
 class Inimigo:
-    def __init__(self, nome, vida):
+    def __init__(self, nome, vida, forca):
         self.nome = nome
         self.vida = vida
-        self.__forca = random.randint(5, 20)
+        self.__forca = forca
 
 
     def tomar_dano(self, dano):
@@ -53,8 +53,10 @@ class Inimigo:
         if alvo.energia <= 0:
             alvo.energia = 0
         print(f"Energia do Jogador: {self.energia}")
-        
-inimigo = Inimigo()
+
+personagem = Personagem("Goku", 100)      
+inimigo = Inimigo("Goblin", 100, 20)
+inimigo.atacar(personagem)
 
 class Jogador:
     def __init__(self):
