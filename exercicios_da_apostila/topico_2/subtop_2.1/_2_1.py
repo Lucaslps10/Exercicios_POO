@@ -61,7 +61,7 @@ inimigo.atacar(personagem)
 class Jogador:
     def __init__(self):
         self.__energia = 100
-        self.pontuacao = Pontuacao()
+        self.pontos = Pontuacao()
 
     def atacar(self, inimigo):
         if self.__energia < 10:
@@ -76,10 +76,10 @@ class Jogador:
 
         derrotado = inimigo.tomar_dano(dano)
         if derrotado:
-            self.pontuacao.adicionar_pontos(10)
+            self.pontos.adicionar_pontos(10)
         
     def descansar(self):
-        if self.energia + 20 > 100:
+        if self.__energia + 20 > 100:
             recuperado = 100 - self.__energia
         else:
             recuperado = 20

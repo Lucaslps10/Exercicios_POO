@@ -1,0 +1,15 @@
+class Pontuacao:
+    def __init__(self, pontos):
+        self.__pontos = pontos
+
+    def adicionar_pontos(self, valor):
+        self.__pontos += valor
+        print(f"Adicionando {valor} pontos...")
+        
+    def mostrar_pontos(self):
+        return self.__pontos
+    
+pontuacao = Pontuacao(0)
+print(pontuacao.mostrar_pontos())
+pontuacao.adicionar_pontos(10)
+print(pontuacao.mostrar_pontos())
