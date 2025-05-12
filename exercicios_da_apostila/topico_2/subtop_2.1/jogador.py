@@ -12,7 +12,7 @@ class Jogador:
     @energia.setter
     def energia(self, valor):
         if self.__energia >= 0:
-            self.energia = valor
+            self.__energia = valor
             
     def atacar(self, inimigo):
         if self.__energia < 10:

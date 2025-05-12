@@ -27,6 +27,6 @@ class Inimigo:
             alvo.energia = 0
         print(f"Energia do Jogador: {self.energia}")
 
-personagem1 = jogador.Jogador()      
+personagem1 = jogador.Jogador(100, 15)      
 inimigo = Inimigo("Goblin", 100, 20)
 inimigo.atacar(personagem1)
