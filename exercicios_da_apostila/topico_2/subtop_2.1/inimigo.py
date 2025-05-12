@@ -1,4 +1,4 @@
-import personagem
+import jogador
 
 class Inimigo:
     def __init__(self, nome, vida, forca):
@@ -27,6 +27,6 @@ class Inimigo:
             alvo.energia = 0
         print(f"Energia do Jogador: {self.energia}")
 
-personagem1 = personagem.Personagem("Goku", 100)      
+personagem1 = jogador.Jogador()      
 inimigo = Inimigo("Goblin", 100, 20)
 inimigo.atacar(personagem1)

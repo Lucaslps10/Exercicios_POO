@@ -53,10 +53,9 @@ class Inimigo:
         if alvo.energia <= 0:
             alvo.energia = 0
         print(f"Energia do Jogador: {self.energia}")
-
-personagem = Personagem("Goku", 100)      
+     
 inimigo = Inimigo("Goblin", 100, 20)
-inimigo.atacar(personagem)
+inimigo.atacar()
 
 class Jogador:
     def __init__(self):
@@ -101,6 +100,5 @@ class Jogador:
         self.__energia += recuperado
         print(f"Jogador recuperou {recuperado} de energia. Energia atual: {self.__energia}")
         
-       
-
+     
 
