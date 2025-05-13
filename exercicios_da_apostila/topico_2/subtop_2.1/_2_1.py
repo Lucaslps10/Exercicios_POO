@@ -52,16 +52,23 @@ class Inimigo:
         alvo.energia -= self.__forca
         if alvo.energia <= 0:
             alvo.energia = 0
-        print(f"Energia do Jogador: {self.energia}")
+        print(f"Energia do Jogador: {alvo.energia}")
      
 inimigo = Inimigo("Goblin", 100, 20)
-inimigo.atacar()
 
 class Jogador:
     def __init__(self):
         self.__energia = 100
-        self.pontos = Pontuacao()
+        self.pontos = 0
 
+    @property
+    def energia(self):
+        return self.__energia
+    
+    @energia.setter
+    def energia(self, valor):
+        self.__energia = valor
+    
     def atacar(self, inimigo):
         if self.__energia < 10:
             print("Energia insuficiente para atacar, descanse primeito...")
@@ -100,5 +107,9 @@ class Jogador:
         self.__energia += recuperado
         print(f"Jogador recuperou {recuperado} de energia. Energia atual: {self.__energia}")
         
-     
+jogador = Jogador()
+print(jogador.energia)
+print(jogador.pontos)
+inimigo.atacar(jogador)
+jogador.recuperar_energia(10)
 

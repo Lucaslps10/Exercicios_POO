@@ -16,7 +16,7 @@ class Jogador:
             
     def atacar(self, inimigo):
         if self.__energia < 10:
-            print("Energia insuficiente para atacar, descanse primeito...")
+            print("Energia insuficiente para atacar, descanse primeiro...")
             self.descansar()
             return 
         dano = random.randint(5, 20)
@@ -39,18 +39,20 @@ class Jogador:
 
     def usar_energia(self, valor):
         self.__energia -= valor
-        print(f"Energia usada: {valor} Restante: {self.energia}")
         if self.__energia < 0:
-            self.__energia = 0
             print("Sem energia suficiente!")
-
+        else:
+            print(f"Energia usada: {valor} Restante: {self.energia}")
+        
     def recuperar_energia(self, valor):
         if self.__energia + valor > 100:
             recuperado = 100 - self.__energia
         else:
             recuperado = valor
+
         self.__energia += recuperado
         print(f"Jogador recuperou {recuperado} de energia. Energia atual: {self.__energia}")
         
-jogador = Jogador(100, 10)
-print(jogador.energia)
+jogador1 = Jogador(100, 10)
+
+jogador1.recuperar_energia(10)

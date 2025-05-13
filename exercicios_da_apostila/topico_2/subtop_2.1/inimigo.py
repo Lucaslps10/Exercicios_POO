@@ -6,7 +6,10 @@ class Inimigo:
         self.vida = vida
         self.__forca = forca
 
-
+    @property
+    def forca(self):
+        return self.__forca
+    
     def tomar_dano(self, dano):
         self.vida -= dano
         if self.vida <= 0:
@@ -25,8 +28,8 @@ class Inimigo:
         alvo.energia -= self.__forca
         if alvo.energia <= 0:
             alvo.energia = 0
-        print(f"Energia do Jogador: {self.energia}")
+        print(f"Energia do Jogador: {alvo.energia}")
 
-personagem1 = jogador.Jogador(100, 15)      
+j1 = jogador.Jogador(100, 15)      
 inimigo = Inimigo("Goblin", 100, 20)
-inimigo.atacar(personagem1)
+inimigo.atacar(j1)
