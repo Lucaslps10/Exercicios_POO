@@ -5,7 +5,7 @@ class Personagem:
         self.__vida = vida
     
     def mostrar_vida(self):
-        return self.__vida
+        return f"{self.nome} tem {self.__vida} pontos de vida."
     
     def tomar_dano(self, dano):
         self.__vida -= dano

@@ -7,7 +7,7 @@ class Pontuacao:
         print(f"Adicionando {valor} pontos...")
         
     def mostrar_pontos(self):
-        return self.__pontos
+        return f"Pontos: {self.__pontos}"
     
 pontuacao = Pontuacao(0)
 print(pontuacao.mostrar_pontos())
