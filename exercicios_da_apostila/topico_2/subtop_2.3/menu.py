@@ -31,11 +31,11 @@ class Menu:
         print("Cada inimigo derrotado vale 10 pontos.")
 
     def iniciar_jogo(self):
-        inimigo1 = inimigo.Inimigo("Thanos", 100, 15)
+        
         jogador1 = jogador.Jogador("Lucas", 100, 50)
         nome_dos_inimigos = ["Freeza", "Majin-Boo", "Dabura", "Baby", "Cell"]
         num_inimigos = random.randint(1, 3)
-        inimigos = [inimigo1(random.choice(nome_dos_inimigos), 100) for _ in range(num_inimigos)]
+        inimigos = [inimigo.Inimigo(random.choice(nome_dos_inimigos), 100) for _ in range(num_inimigos)]
 
         print(f"\nIniciando o jogo com {num_inimigos} inimigo(s)!")
 
@@ -43,10 +43,10 @@ class Menu:
 
         for inimigo in inimigos:
             print(f"\nLutando contra {inimigo.nome}")
-            while inimigo1.vida > 0:
+            while inimigo.vida > 0:
                 jogador1.atacar(inimigo)
                 turnos_restantes -= 1
-                if inimigo1.vida <= 0:
+                if inimigo.vida <= 0:
                     break
                 if jogador1.energia < 10:
                     jogador1.descansar()
