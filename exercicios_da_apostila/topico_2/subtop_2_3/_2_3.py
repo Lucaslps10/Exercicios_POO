@@ -1,6 +1,8 @@
 
 ############## Construtores ###############
+
 import random
+from subtop2_1.pontuacao import pontuacao
 
 class Personagem:
     def __init__(self, nome, vida, defesa=0):
@@ -81,15 +83,24 @@ inimigo.forca = 25
 print(inimigo.forca)
 
 class Jogador:
-    def __init__(self, nome, energia, pontos):
+    def __init__(self, nome, energia, pontos = pontuacao.Pontuacao()):
         self.nome = nome
         self.__energia = energia
         self.pontos = pontos
+
+    @property
+    def energia(self):
+        return self.__energia
+    
+    @energia.setter
+    def energia(self, valor):
+        self.__energia += valor
 
     def adicionar_pontos(self, valor):
         self.pontos += valor
 
     def atacar(self, inimigo):
+        i = Inimigo("Thanos", 100, 15)
         if self.__energia < 10:
             print("Energia insuficiente para atacar, descanse primeito...")
             self.descansar()
@@ -100,7 +111,7 @@ class Jogador:
         self.__energia -= 10
         print(f"Energia restante: {self.__energia}")
 
-        derrotado = inimigo.tomar_dano(dano)
+        derrotado = i.tomar_dano(dano)
         if derrotado:
             self.pontos.adicionar_pontos(10)
         
@@ -156,10 +167,10 @@ class Menu:
         print("Cada inimigo derrotado vale 10 pontos.")
 
     def iniciar_jogo(self):
-        jogador = Jogador()
+        jogador = Jogador("Super Mário", 100, 0)
         nome_dos_inimigos = ["Freeza", "Majin-Boo", "Dabura", "Baby", "Cell"]
         num_inimigos = random.randint(1, 3)
-        inimigos = [Inimigo(random.choice(nome_dos_inimigos), 100) for _ in range(num_inimigos)]
+        inimigos = [Inimigo(random.choice(nome_dos_inimigos), 100, 10) for _ in range(num_inimigos)]
 
         print(f"\nIniciando o jogo com {num_inimigos} inimigo(s)!")
 

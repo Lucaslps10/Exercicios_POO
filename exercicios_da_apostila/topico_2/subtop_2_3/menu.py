@@ -9,7 +9,7 @@ class Menu:
     def exibir(self):
         while True:
             print(self.titulo)
-            print("1. Iniciar Jogo")
+            print("\n1. Iniciar Jogo")
             print("2. Mostrar Opções")
             print("3. Sair")
             opcao_escolhida = input("Escolha uma opção: ")
@@ -35,18 +35,18 @@ class Menu:
         jogador1 = jogador.Jogador("Lucas", 100, 50)
         nome_dos_inimigos = ["Freeza", "Majin-Boo", "Dabura", "Baby", "Cell"]
         num_inimigos = random.randint(1, 3)
-        inimigos = [inimigo.Inimigo(random.choice(nome_dos_inimigos), 100) for _ in range(num_inimigos)]
+        inimigos = [inimigo.Inimigo(random.choice(nome_dos_inimigos), 100, 15) for _ in range(num_inimigos)]
 
         print(f"\nIniciando o jogo com {num_inimigos} inimigo(s)!")
 
         turnos_restantes = 10
 
-        for inimigo in inimigos:
-            print(f"\nLutando contra {inimigo.nome}")
-            while inimigo.vida > 0:
-                jogador1.atacar(inimigo)
+        for i in inimigos:
+            print(f"\nLutando contra {i.nome}")
+            while i.vida > 0:
+                jogador1.atacar(i)
                 turnos_restantes -= 1
-                if inimigo.vida <= 0:
+                if i.vida <= 0:
                     break
                 if jogador1.energia < 10:
                     jogador1.descansar()
