@@ -1,9 +1,10 @@
 import random
-from subtop2_1 import pontuacao
-import inimigo
+
+from subtop_2_1 import pontuacao
+
 
 class Jogador:
-    def __init__(self, nome, energia, pontos = pontuacao.Pontuacao(0)):
+    def __init__(self, nome, energia, pontos):
         self.nome = nome
         self.__energia = energia
         self.pontos = pontos
