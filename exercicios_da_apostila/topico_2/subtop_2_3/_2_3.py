@@ -2,6 +2,7 @@
 ############## Construtores ###############
 
 import random
+from subtop_2_2.pontuacao import Pontuacao
 
 
 class Personagem:
@@ -83,10 +84,10 @@ inimigo.forca = 25
 print(inimigo.forca)
 
 class Jogador:
-    def __init__(self, nome, energia, pontos):
+    def __init__(self, nome, energia, pontuacao = Pontuacao):
         self.nome = nome
         self.__energia = energia
-        self.pontos = pontos
+        self.pontuacao = pontuacao
 
     @property
     def energia(self):
@@ -97,23 +98,22 @@ class Jogador:
         self.__energia += valor
 
     def adicionar_pontos(self, valor):
-        self.pontos += valor
+        self.pontuacao += valor
 
-    def atacar(self, inimigo):
-        i = Inimigo("Thanos", 100, 15)
+    def atacar(self, oponente):
         if self.__energia < 10:
             print("Energia insuficiente para atacar, descanse primeito...")
             self.descansar()
             return 
         dano = random.randint(5, 20)
-        print(f"Jogador atacou {inimigo.nome} e causou {dano} de dano!")
+        print(f"Jogador atacou {oponente.nome} e causou {dano} de dano!")
 
         self.__energia -= 10
         print(f"Energia restante: {self.__energia}")
 
-        derrotado = i.tomar_dano(dano)
+        derrotado = oponente.tomar_dano(dano)
         if derrotado:
-            self.pontos.adicionar_pontos(10)
+            self.pontuacao.adicionar_pontos(10)
         
     def descansar(self):
         if self.energia + 20 > 100:
