@@ -62,6 +62,8 @@ class Pontuacao:
 
 pontuacao = Pontuacao(10)
 print(pontuacao.pontos)
+pontuacao.adicionar_pontos(25)
+print(pontuacao.pontos)
 
 '''
 pontuacao.pontos = -5

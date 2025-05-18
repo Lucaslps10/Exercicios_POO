@@ -2,7 +2,7 @@
 ############## Construtores ###############
 
 import random
-from subtop_2_2.pontuacao import Pontuacao
+from exercicios_da_apostila.topico_2.subtop_2_2.pontuacao import Pontuacao
 
 
 class Personagem:
@@ -84,7 +84,7 @@ inimigo.forca = 25
 print(inimigo.forca)
 
 class Jogador:
-    def __init__(self, nome, energia, pontuacao = Pontuacao):
+    def __init__(self, nome, energia, pontuacao = Pontuacao(0)):
         self.nome = nome
         self.__energia = energia
         self.pontuacao = pontuacao
