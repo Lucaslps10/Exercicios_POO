@@ -60,6 +60,7 @@ class Jogador:
     def __init__(self):
         self.__energia = 100
         self.pontos = 0
+        
 
     @property
     def energia(self):
@@ -112,4 +113,5 @@ print(jogador.energia)
 print(jogador.pontos)
 inimigo.atacar(jogador)
 jogador.recuperar_energia(10)
+jogador.atacar(inimigo)
 

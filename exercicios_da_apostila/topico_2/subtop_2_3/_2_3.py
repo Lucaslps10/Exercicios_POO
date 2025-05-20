@@ -2,7 +2,7 @@
 ############## Construtores ###############
 
 import random
-from exercicios_da_apostila.topico_2.subtop_2_2.pontuacao import Pontuacao
+from exercicios_da_apostila.topico_2.subtop_2_2 import pontuacao
 
 
 class Personagem:
@@ -84,7 +84,7 @@ inimigo.forca = 25
 print(inimigo.forca)
 
 class Jogador:
-    def __init__(self, nome, energia, pontuacao = Pontuacao(0)):
+    def __init__(self, nome, energia, pontuacao = pontuacao.Pontuacao(0)):
         self.nome = nome
         self.__energia = energia
         self.pontuacao = pontuacao
@@ -100,18 +100,18 @@ class Jogador:
     def adicionar_pontos(self, valor):
         self.pontuacao += valor
 
-    def atacar(self, oponente):
+    def atacar(self, inimigo):
         if self.__energia < 10:
             print("Energia insuficiente para atacar, descanse primeito...")
             self.descansar()
             return 
         dano = random.randint(5, 20)
-        print(f"Jogador atacou {oponente.nome} e causou {dano} de dano!")
+        print(f"Jogador atacou {inimigo.nome} e causou {dano} de dano!")
 
         self.__energia -= 10
         print(f"Energia restante: {self.__energia}")
 
-        derrotado = oponente.tomar_dano(dano)
+        derrotado = inimigo.tomar_dano(dano)
         if derrotado:
             self.pontuacao.adicionar_pontos(10)
         
@@ -167,7 +167,7 @@ class Menu:
         print("Cada inimigo derrotado vale 10 pontos.")
 
     def iniciar_jogo(self):
-        jogador = Jogador("Super Mário", 100, 0)
+        jogador = Jogador("Super Mário", 100)
         nome_dos_inimigos = ["Freeza", "Majin-Boo", "Dabura", "Baby", "Cell"]
         num_inimigos = random.randint(1, 3)
         inimigos = [Inimigo(random.choice(nome_dos_inimigos), 100, 10) for _ in range(num_inimigos)]

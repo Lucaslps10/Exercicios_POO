@@ -1,6 +1,7 @@
 import random
 import pontuacao
 
+
 class Jogador:
     def __init__(self, energia, pontos = pontuacao.Pontuacao(0)):
         self.__energia = energia
@@ -57,4 +58,6 @@ class Jogador:
 jogador1 = Jogador(90, 10)
 
 jogador1.recuperar_energia(10)
+
+
 

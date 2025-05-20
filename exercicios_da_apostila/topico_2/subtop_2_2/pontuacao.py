@@ -1,5 +1,5 @@
 class Pontuacao:
-    def __init__(self, pontos):
+    def __init__(self, pontos = 0):
         self.__pontos = pontos
 
     def adicionar_pontos(self, valor):
