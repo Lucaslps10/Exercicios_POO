@@ -1,4 +1,3 @@
-import random
 
 class Personagem:
     def __init__(self, nome, vida, defesa=0):

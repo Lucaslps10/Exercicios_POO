@@ -6,10 +6,10 @@ from exercicios_da_apostila.topico_2.subtop_2_3 import inimigo
 
 
 class Jogador:
-    def __init__(self, nome, energia, pontuacao = pontuacao.Pontuacao()):
+    def __init__(self, nome, energia):
         self.nome = nome
         self.__energia = energia
-        self.pontuacao = pontuacao
+        self.pontuacao = pontuacao.Pontuacao()
 
     @property
     def energia(self):
@@ -20,7 +20,7 @@ class Jogador:
         self.__energia += valor
         
     def adicionar_pontos(self, valor):
-        self.pontuacao += valor
+        self.pontuacao.adicionar_pontos(valor)
 
     def atacar(self, oponente):
 
@@ -61,7 +61,8 @@ class Jogador:
         self.__energia += recuperado
         print(f"Jogador recuperou {recuperado} de energia. Energia atual: {self.__energia}")
 
-jogador1 = Jogador("Slash", 100, 0)
+
+jogador1 = Jogador("Slash", 100)
 inimigo1 = inimigo.Inimigo("Caos", 100, 10)
 print(jogador1.nome)
 print(jogador1.energia)

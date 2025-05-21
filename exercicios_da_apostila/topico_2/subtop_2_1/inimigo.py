@@ -33,3 +33,4 @@ class Inimigo:
 j1 = jogador.Jogador(100, 15)      
 inimigo = Inimigo("Goblin", 100, 20)
 inimigo.atacar(j1)
+inimigo.mostrar_forca()

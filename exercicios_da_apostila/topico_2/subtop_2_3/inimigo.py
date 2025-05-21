@@ -35,6 +35,7 @@ class Inimigo:
             
         print(f"Energia do Jogador: {self.energia}")
 
+"""
 inimigo = Inimigo("Thanos", 100, 15)
 
 
@@ -45,3 +46,4 @@ print(inimigo.forca)
 inimigo.forca = 25 
 
 print(inimigo.forca)
+"""
